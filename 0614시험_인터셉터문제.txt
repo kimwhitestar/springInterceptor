@@ -1,0 +1,23 @@
+-- 프로젝트명 : springInterceptor   (com.spring.springInterceptor)
+-- 
+'방명록/게시판/자료실/회원방'에 대하여 세션 slevel로 처리한다.
+세션레벨 변수명 : sLevel
+로그인 처리후 : sLevel 등급값을 정한다.
+로그인 사용자 :  a로 시작하는 로그인 사용자 : 1레벨
+             b로 시작하는 로그인 사용자 : 2레벨
+             c로 시작하는 로그인 사용자 : 3레벨
+             d로 시작하는 로그인 사용자 : 4레벨
+
+회원방(member), 방명록(guest), 게시판(board), 자료실(pds) :
+
+  - 모두 허용 위치및 경로?
+    회원 가입(/member/mInput)
+    로그인(/member/mLogin)
+    방명록 모든 폴더(guest)
+
+  - 일부 구간만 허용?
+     게시판(board) 기본 구역은 세션 slevel 이 2이상만 사용가능.
+     게시판(board)의 '삭제(delete)'는 세션 slevel 3이상만 허용.
+     자료실(pds)의 기본 구간은 세션 slevel 3이상만 허용.
+     자료실(pds)의 '파일올리기(pUpload)'는 slevel 4이상만 허용
+  
