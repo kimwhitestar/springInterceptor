@@ -17,7 +17,7 @@
 
   - 일부 구간만 허용?
      게시판(board) 기본 구역은 세션 slevel 이 2이상만 사용가능.
-     게시판(board)의 '삭제(delete)'는 세션 slevel 3이상만 허용.
+     게시판(board)의 '삭제(bDelete)'는 세션 slevel 3이상만 허용.
      자료실(pds)의 기본 구간은 세션 slevel 3이상만 허용.
      자료실(pds)의 '파일올리기(pUpload)'는 slevel 4이상만 허용
   

@@ -24,23 +24,31 @@
 	<context:component-scan base-package="com.spring.springInterceptor" />
 	
 	<!-- Interceptor 설정 -->
-	<beans:bean id="memberInterceptor" class="com.spring.springInterceptor.interceptor.MemberInterceptor" />
-	<beans:bean id="boardInterceptor" class="com.spring.springInterceptor.interceptor.BoardInterceptor" />
-	<beans:bean id="pdfInterceptor" class="com.spring.springInterceptor.interceptor.PdfInterceptor" />
+	<beans:bean id="level1Interceptor" class="com.spring.springInterceptor.interceptor.Level1Interceptor" />
+	<beans:bean id="level2Interceptor" class="com.spring.springInterceptor.interceptor.Level2Interceptor" />
+	<beans:bean id="level3Interceptor" class="com.spring.springInterceptor.interceptor.Level3Interceptor" />
+	<beans:bean id="level4Interceptor" class="com.spring.springInterceptor.interceptor.Level4Interceptor" />
 	<interceptors>
 		<interceptor >
 			<mapping path="/member/**" />
 			<exclude-mapping path="/member/mInput" /><!-- Interceptor 제외 (Free Law) -->
 			<exclude-mapping path="/member/mLogin" /><!-- Interceptor 제외 (Free Law) -->
-			<beans:ref bean="memberInterceptor" /><!-- bean name이 bean id이다 -->	
+			<beans:ref bean="level1Interceptor" /><!-- bean name이 bean id이다 -->	
 		</interceptor>
 		<interceptor >
 			<mapping path="/board/**" />
-			<beans:ref bean="boardInterceptor" />
+			<exclude-mapping path="/board/bDelete" /><!-- Interceptor 제외 (Free Law) -->
+			<beans:ref bean="level2Interceptor" />
 		</interceptor>
 		<interceptor >
 			<mapping path="/pdf/**" />
-			<beans:ref bean="pdfInterceptor" />
+			<mapping path="/board/bDelete" />
+			<exclude-mapping path="/pdf/pUpload" /><!-- Interceptor 제외 (Free Law) -->
+			<beans:ref bean="level3Interceptor" />
+		</interceptor>
+		<interceptor >
+			<mapping path="/pdf/pUpload" />
+			<beans:ref bean="level4Interceptor" />
 		</interceptor>
 	</interceptors>
 	
